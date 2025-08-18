@@ -8,8 +8,13 @@
   </head>
   <body>
     <h1>Dynamic Quote Generator</h1>
+     <select id="categoryFilter" onchange="filterQuotes()">
+    <option value="all">All Categories</option>
+    <!-- Dynamically populated categories -->
+    </select>
     <div id="quoteDisplay"></div>
     <button id="newQuote">Show New Quote</button>
+    
     <!-- Export Button -->
     <button id="exportBtn" onclick="exportToJsonFile()">Export Quotes</button>
 

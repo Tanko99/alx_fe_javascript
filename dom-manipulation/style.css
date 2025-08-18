@@ -112,3 +112,20 @@ input[type="text"]:focus {
 #importFile:hover {
     background-color: #0b7dda;
 }
+
+
+#categoryFilter {
+    padding: 8px 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+#categoryFilter:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
