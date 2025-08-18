@@ -93,12 +93,12 @@ input[type="text"]:focus {
 }
 
 /* Export button */
-#export-btn {
+#exportBtn {
     background-color: #4CAF50;
     color: white;
     transition: 0.3s;
 }
-#export-btn:hover {
+#exportBtn:hover {
     background-color: #45a049;
 }
 

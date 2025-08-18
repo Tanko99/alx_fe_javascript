@@ -1,8 +1,12 @@
 // reference variables
+const quoteInput = document.getElementById('newQuoteText');
+const categoryInput = document.getElementById('newQuoteCategory');
 const quoteDisplay = document.getElementById('quoteDisplay');
 const newQuoteBtn = document.getElementById('newQuote');
+const exportBtn = document.getElementById('exportBtn');
+const importFile = document.getElementById('importFile');
 
-// empty array for quotes and localStorage to store added quotes in the browser
+// empty array for quotes and a localstorage to store added quotes in the browser
 let quotes = [];
 const storedQuotes = localStorage.getItem('myQuotes');
 if (storedQuotes) {
@@ -68,7 +72,7 @@ function addQuote() {
             category: quoteCategory
         };
         quotes.push(objQuote);
-        saveQuotes();
+        saveQuotes(); 
 
         // clear inputs
         document.getElementById('newQuoteText').value = "";
@@ -82,11 +86,11 @@ function addQuote() {
 // event listener for random quote button
 newQuoteBtn.addEventListener('click', showRandomQuote);
 
-// function to export to json
-function exportQuotesToJson() {
+
+function exportToJsonFile() {
     if (quotes.length === 0) {
         alert('No quotes to export yet!');
-        return;
+        return; 
     }
 
     const jsonData = JSON.stringify(quotes, null, 2);
@@ -96,37 +100,15 @@ function exportQuotesToJson() {
     document.body.appendChild(a);
     a.href = url;
     a.download = "quotes.json";
-    a.click();
+    a.click(); 
 
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(url); 
 }
 
-// creating an export button element
-function createExportBtn() {
-    const exportBtn = document.createElement('button');
-    exportBtn.id = "export-btn";
-    exportBtn.textContent = "Export Quotes";
-    document.body.appendChild(exportBtn);
+// bind export button to function
+exportBtn.addEventListener('click', exportToJsonFile);
 
-    // ✅ attach listener here after creating it
-    exportBtn.addEventListener('click', exportQuotesToJson);
-}
 
-createExportBtn();
-
-// input element function
-function createInputElement() {
-    const inputElement = document.createElement("input");
-    inputElement.id = "importFile";
-    inputElement.type = "file";
-    inputElement.setAttribute('accept', '.json');
-    inputElement.setAttribute('onchange', 'importFromJsonFile(event)');
-    document.body.appendChild(inputElement);
-}
-
-createInputElement();
-
-// create a function to import file from json
 function importFromJsonFile(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -138,5 +120,5 @@ function importFromJsonFile(event) {
         saveQuotes();
         alert('Quotes imported successfully!');
     };
-    fileReader.readAsText(file);
+    fileReader.readAsText(file); 
 }
